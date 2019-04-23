@@ -2,6 +2,8 @@ import React from 'react';
 import libpath from 'path';
 import { execSync } from 'child_process';
 import lodashMerge from 'lodash/merge';
+import config from '../config';
+import fs from 'fs-extra';
 
 const {
 	env: { NODE_ENV }
@@ -13,6 +15,13 @@ const Script = ({ src, babelOptions = {} }) => {
 		babelOptions
 	);
 
+	const dst = libpath.join(process.cwd(), config.dst, src);
+	const dstDir = libpath.dirname(dst);
+
+	if (!fs.existsSync(dstDir)) {
+		fs.mkdirpSync(dstDir);
+	}
+
 	if (NODE_ENV === 'production') {
 		execSync(
 			`npx browserify ${libpath.join(
@@ -22,19 +31,14 @@ const Script = ({ src, babelOptions = {} }) => {
 				' '
 			)} ] --plugins [ ${plugins.join(
 				' '
-			)} ] ] | npx uglifyjs -c > ${libpath.join(
-				process.cwd(),
-				'docs',
-				src
-			)}`
+			)} ] ] | npx uglifyjs -c > ${dst}`
 		);
 	} else {
 		execSync(
-			`npx browserify ${libpath.join(__dirname, src)} -o ${libpath.join(
-				process.cwd(),
-				'docs',
+			`npx browserify ${libpath.join(
+				__dirname,
 				src
-			)} -t [ babelify --presets [ ${presets.join(
+			)} -o ${dst} -t [ babelify --presets [ ${presets.join(
 				' '
 			)} ] --plugins [ ${plugins.join(' ')} ] ]`
 		);

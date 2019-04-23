@@ -5,8 +5,9 @@ import { CacheProvider } from '@emotion/core';
 import { renderToStaticMarkup } from 'react-dom/server';
 import fs from 'fs-extra';
 import libpath from 'path';
+import config from '../config';
 
-const dst = libpath.join(__dirname, '../docs');
+const dst = libpath.join(process.cwd(), config.dst);
 
 export default async () => {
 	if (await !fs.exists(dst)) {

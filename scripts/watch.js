@@ -2,6 +2,7 @@ import liveServer from 'live-server';
 import chokidar from 'chokidar';
 import libpath from 'path';
 import { exec } from 'child_process';
+import config from '../config';
 
 let timer = -1;
 
@@ -28,9 +29,12 @@ const build = () =>
 (async () => {
 	await build();
 
-	liveServer.start({ port: 3000, root: libpath.join(__dirname, '../docs') });
+	liveServer.start({
+		port: 3000,
+		root: libpath.join(process.cwd(), config.dst)
+	});
 	chokidar
-		.watch(libpath.join(__dirname, '../src/'), {
+		.watch(libpath.join(process.cwd(), '../src/'), {
 			ignored: /(^|[/\\])\../,
 			persistent: true
 		})
