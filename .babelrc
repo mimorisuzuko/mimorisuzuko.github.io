@@ -1,13 +1,24 @@
 {
-	"plugins": ["dynamic-import-node"],
+	"plugins": [
+		"dynamic-import-node",
+		[
+			"@babel/plugin-proposal-decorators",
+			{
+				"legacy": true
+			}
+		],
+		[
+			"babel-plugin-inline-import",
+			{
+				"extensions": [
+					".bib"
+				]
+			}
+		]
+	],
 	"presets": [
 		[
-			"@babel/preset-env",
-			{
-				"targets": {
-					"node": "current"
-				}
-			}
+			"@babel/preset-env"
 		],
 		"@babel/preset-react"
 	]
