@@ -2,7 +2,7 @@ import React from 'react';
 import libpath from 'path';
 import { execSync } from 'child_process';
 import lodashMerge from 'lodash/merge';
-import config from '../config';
+import config from '../../config';
 import fs from 'fs-extra';
 
 const {
@@ -25,7 +25,7 @@ const Script = ({ src, babelOptions = {} }) => {
 	if (NODE_ENV === 'production') {
 		execSync(
 			`npx browserify ${libpath.join(
-				__dirname,
+				process.cwd(),
 				src
 			)} -t [ babelify --presets [ ${presets.join(
 				' '
@@ -36,7 +36,7 @@ const Script = ({ src, babelOptions = {} }) => {
 	} else {
 		execSync(
 			`npx browserify ${libpath.join(
-				__dirname,
+				process.cwd(),
 				src
 			)} -o ${dst} -t [ babelify --presets [ ${presets.join(
 				' '

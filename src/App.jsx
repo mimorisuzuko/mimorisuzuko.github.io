@@ -6,7 +6,8 @@ import lodashMap from 'lodash/map';
 import Head from './Head';
 import Publications from './Publications';
 import News from './News';
-import Script from './Script';
+import Script from './components/Script';
+import Img from './components/Img';
 
 const FaListItem = ({ icon, children }) => (
 	<li>
@@ -49,9 +50,9 @@ const App = () => (
 				<div className='row'>
 					<div className='col-md-4'>
 						<div className='box'>
-							<img
-								src='me.jpg'
-								className={css({
+							<Img
+								src='assets/me.jpg'
+								css={css({
 									display: 'block',
 									width: '100%',
 									borderRadius: '50%'
