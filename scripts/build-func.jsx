@@ -15,6 +15,15 @@ export default async () => {
 
 	await fs.writeFile(
 		libpath.join(dst, 'index.html'),
-		`<!DOCTYPE html>${renderStylesToString(renderToStaticMarkup(<App />))}`
+		`<!DOCTYPE html>${renderStylesToString(
+			renderToStaticMarkup(
+				<html lang='ja'>
+					<config.Head />
+					<config.Body>
+						<App />
+					</config.Body>
+				</html>
+			)
+		)}`
 	);
 };
