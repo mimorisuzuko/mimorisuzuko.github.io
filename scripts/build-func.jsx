@@ -4,17 +4,51 @@ import { renderToStaticMarkup } from 'react-dom/server';
 import fs from 'fs-extra';
 import libpath from 'path';
 import config from '../config';
-import App from '../src/App';
+import App from '../src';
+import { exec } from 'child_process';
 
-const dst = libpath.join(process.cwd(), config.dst);
+const dstDir = libpath.join(process.cwd(), config.dst);
+const {
+	env: { NODE_ENV }
+} = process;
 
 export default async () => {
-	if (await !fs.exists(dst)) {
-		await fs.mkdir(dst);
+	if (await !fs.exists(dstDir)) {
+		await fs.mkdir(dstDir);
 	}
 
+	await new Promise((resolve, reject) => {
+		const src = libpath.join(process.cwd(), 'src/index.jsx');
+		const dst = libpath.join(dstDir, 'index.js');
+
+		exec(
+			NODE_ENV === 'production'
+				? `npx browserify ${src} --extension=.jsx -t babelify | npx uglifyjs -c > ${dst}`
+				: `npx browserify ${src} --extension=.jsx -o ${dst} -t babelify`,
+			(err, stdout, stderr) => {
+				if (err || stderr) {
+					reject(err || stderr);
+				} else {
+					resolve(stdout);
+				}
+			}
+		);
+	});
+
 	await fs.writeFile(
-		libpath.join(dst, 'index.html'),
-		`<!DOCTYPE html>${renderStylesToString(renderToStaticMarkup(<App />))}`
+		libpath.join(dstDir, 'index.html'),
+		`<!DOCTYPE html>${renderStylesToString(
+			renderToStaticMarkup(
+				<html lang='ja'>
+					<config.Head />
+					<config.Body>
+						<div id='root'>
+							<App />
+						</div>
+						<script src='index.js' />
+					</config.Body>
+				</html>
+			)
+		)}`
 	);
 };
