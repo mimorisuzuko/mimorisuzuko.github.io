@@ -1,10 +1,14 @@
 import React from 'react';
-import fs from 'fs';
 import bibtex from 'bibtex-parse-js';
-import libpath from 'path';
 import lodashMap from 'lodash/map';
 import lodashEach from 'lodash/forEach';
 import { css } from 'emotion';
+import domesticJournalWithReview from './bibs/domestic-journal-w-review.bib';
+import oralDomesticConf from './bibs/oral-domestic-conf.bib';
+import paperDomesticConfWithReview from './bibs/paper-domestic-conf-w-review.bib';
+import paperInternationalConfWithReview from './bibs/paper-international-conf-w-review.bib';
+import posterAndDemoDomesticConf from './bibs/poster-and-demo-domestic-conf.bib';
+import posterAndDemoInternationalConfWithReview from './bibs/poster-and-demo-international-conf-w-review.bib';
 
 const isMe = (name) => {
 	return (
@@ -17,14 +21,10 @@ const isMe = (name) => {
 /**
  * @param {string} filename
  */
-const renderPublicationEn = (filename) => (
+const renderPublicationEn = (txt) => (
 	<ol>
 		{lodashMap(
-			bibtex.toJSON(
-				fs.readFileSync(libpath.join(__dirname, filename), {
-					encoding: 'utf-8'
-				})
-			),
+			bibtex.toJSON(txt),
 			({
 				entryTags: {
 					author,
@@ -84,14 +84,10 @@ const renderPublicationEn = (filename) => (
 	</ol>
 );
 
-const renderPublicationJa = (filename) => (
+const renderPublicationJa = (txt) => (
 	<ol>
 		{lodashMap(
-			bibtex.toJSON(
-				fs.readFileSync(libpath.join(__dirname, filename), {
-					encoding: 'utf-8'
-				})
-			),
+			bibtex.toJSON(txt),
 			({
 				entryTags: {
 					author,
@@ -198,19 +194,17 @@ const Publications = () => (
 		})}
 	>
 		<h3>Paper at international conference w/ review</h3>
-		{renderPublicationEn('./bibs/paper-international-conf-w-review.bib')}
+		{renderPublicationEn(paperInternationalConfWithReview)}
 		<h3>Poster and demo at international conference w/ review</h3>
-		{renderPublicationEn(
-			'./bibs/poster-and-demo-international-conf-w-review.bib'
-		)}
+		{renderPublicationEn(posterAndDemoInternationalConfWithReview)}
 		<h3>Domestic journal w/ review</h3>
-		{renderPublicationJa('bibs/domestic-journal-w-review.bib')}
+		{renderPublicationJa(domesticJournalWithReview)}
 		<h3>Paper at domestic conference w/ review</h3>
-		{renderPublicationJa('bibs/paper-domestic-conf-w-review.bib')}
+		{renderPublicationJa(paperDomesticConfWithReview)}
 		<h3>Oral presentation at domestic conference</h3>
-		{renderPublicationJa('bibs/oral-domestic-conf.bib')}
+		{renderPublicationJa(oralDomesticConf)}
 		<h3>Poster and demo at domestic conference</h3>
-		{renderPublicationJa('bibs/poster-and-demo-domestic-conf.bib')}
+		{renderPublicationJa(posterAndDemoDomesticConf)}
 	</div>
 );
 

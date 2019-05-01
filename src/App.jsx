@@ -5,7 +5,6 @@ import { pinkColor } from './style';
 import lodashMap from 'lodash/map';
 import Publications from './Publications';
 import News from './News';
-import Script from './components/Script';
 import Img from './components/Img';
 
 const FaListItem = ({ icon, children }) => (
@@ -188,12 +187,6 @@ const App = () => (
 		<script
 			defer
 			src='https://use.fontawesome.com/releases/v5.0.6/js/all.js'
-		/>
-		<Script
-			src='assets/index.js'
-			babelOptions={{
-				presets: ['@babel/preset-env']
-			}}
 		/>
 	</>
 );

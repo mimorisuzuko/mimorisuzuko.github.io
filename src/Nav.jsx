@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { css } from 'emotion';
 import { pinkColor } from './style';
 import moment from 'moment';
+import autobind from 'autobind-decorator';
 
 const linkBaseStyke = css({
 	color: 'inherit',
@@ -37,6 +38,18 @@ class Nav extends Component {
 		}
 
 		this.state = { usbVersion };
+	}
+
+	@autobind
+	loop() {
+		const usbVersion = Nav.getUsbVersion();
+
+		document.title = usbVersion;
+		this.setState({ usbVersion }, () => requestAnimationFrame(this.loop));
+	}
+
+	componentDidMount() {
+		this.loop();
 	}
 
 	render() {
