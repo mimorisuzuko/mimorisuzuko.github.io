@@ -21,17 +21,19 @@ class Builder {
 						resolve({ stdout, stderr });
 					}
 				});
-			}).then(({ stdout, stderr }) => {
-				console.log('🙆‍  Succeeded to build');
-				console.log(`Stdout: ${stdout}`);
-				console.log(`Stderr: ${stderr}`);
 			})
-			.catch((err) => {
-				console.log('🙅‍  Failed to build');
-				console.log(`Err: ${err}`);
-			}).finally(() => {
-				this.canBuild = true;
-			});
+				.then(({ stdout, stderr }) => {
+					console.log('🙆‍  Succeeded to build');
+					console.log(`Stdout: ${stdout}`);
+					console.log(`Stderr: ${stderr}`);
+				})
+				.catch((err) => {
+					console.log('🙅‍  Failed to build');
+					console.log(`Err: ${err}`);
+				})
+				.finally(() => {
+					this.canBuild = true;
+				});
 		}
 	}
 }
