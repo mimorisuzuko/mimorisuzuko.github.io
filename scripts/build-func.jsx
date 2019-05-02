@@ -5,7 +5,9 @@ import fs from 'fs-extra';
 import libpath from 'path';
 import config from '../config';
 import App from '../src';
-import { exec } from 'child_process';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import uglifyjs from 'uglify-js';
 
 const dstDir = libpath.join(process.cwd(), config.dst);
 const {
@@ -17,23 +19,38 @@ export default async () => {
 		await fs.mkdir(dstDir);
 	}
 
-	await new Promise((resolve, reject) => {
-		const src = libpath.join(process.cwd(), 'src/index.jsx');
-		const dst = libpath.join(dstDir, 'index.js');
+	await fs.writeFile(
+		libpath.join(dstDir, 'index.js'),
+		await new Promise((resolve, reject) => {
+			const src = libpath.join(process.cwd(), 'src/index.jsx');
 
-		exec(
-			NODE_ENV === 'production'
-				? `npx browserify ${src} --extension=.jsx -t babelify | npx uglifyjs -c > ${dst}`
-				: `npx browserify ${src} --extension=.jsx -o ${dst} -t babelify`,
-			(err, stdout, stderr) => {
-				if (err || stderr) {
-					reject(err || stderr);
-				} else {
-					resolve(stdout);
-				}
-			}
-		);
-	});
+			browserify({
+				extensions: ['.jsx']
+			})
+				.add(src)
+				.transform(babelify)
+				.bundle((err, bundled) => {
+					if (err) {
+						reject(err);
+					} else {
+						let str = bundled.toString();
+
+						if (NODE_ENV === 'production') {
+							const { code, error } = uglifyjs.minify(str);
+
+							if (error) {
+								reject(error);
+							} else {
+								str = code;
+							}
+						}
+
+						resolve(str);
+					}
+				});
+		}),
+		{ encoding: 'utf-8' }
+	);
 
 	await fs.writeFile(
 		libpath.join(dstDir, 'index.html'),
