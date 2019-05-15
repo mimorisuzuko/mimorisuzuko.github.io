@@ -13,6 +13,8 @@ class Builder {
 		const { canBuild } = this;
 
 		if (canBuild) {
+			this.canBuild = false;
+
 			return new Promise((resolve, reject) => {
 				exec('yarn build', (err, stdout, stderr) => {
 					if (err) {
