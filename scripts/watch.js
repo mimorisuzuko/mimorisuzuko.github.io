@@ -50,7 +50,7 @@ const builder = new Builder();
 		root: libpath.join(process.cwd(), config.dst)
 	});
 	chokidar
-		.watch(libpath.join(process.cwd(), '../src/'), {
+		.watch(libpath.join(process.cwd(), 'src/'), {
 			ignored: /(^|[/\\])\../,
 			persistent: true
 		})

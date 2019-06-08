@@ -32,6 +32,7 @@ const renderPublicationEn = (txt) => (
 					booktitle,
 					series,
 					pages,
+					numpages,
 					year,
 					url,
 					_others_,
@@ -58,15 +59,24 @@ const renderPublicationEn = (txt) => (
 				});
 
 				ret.push(`${title}. `);
-				ret.push('In ', <i>{booktitle}</i>, ` (${series})`);
+				ret.push('In ', <i>{booktitle}</i>);
+
+				if (series) {
+					ret.push(` (${series})`);
+				}
 
 				if (pages) {
 					ret.push(`, ${pages}`);
+				} else if (numpages) {
+					ret.push(`, ${numpages} pages`);
 				}
 
 				ret.push(`, ${year}. `);
 				ret.push(<a href={url}>{url}</a>);
-				ret.push(` [${_others_}]`);
+
+				if (_others_) {
+					ret.push(` [${_others_}]`);
+				}
 
 				if (_miyashitacomurl_) {
 					ret.push(
