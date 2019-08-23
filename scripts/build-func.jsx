@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderStylesToString } from 'emotion-server';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import fs from 'fs-extra';
 import libpath from 'path';
 import config from '../config';
@@ -55,7 +55,7 @@ export default async () => {
 	await fs.writeFile(
 		libpath.join(dstDir, 'index.html'),
 		`<!DOCTYPE html>${renderStylesToString(
-			renderToStaticMarkup(
+			renderToString(
 				<html lang='ja'>
 					<config.Head />
 					<config.Body>
