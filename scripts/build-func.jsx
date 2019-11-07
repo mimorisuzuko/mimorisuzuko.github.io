@@ -11,61 +11,61 @@ import uglifyjs from 'uglify-js';
 
 const dstDir = libpath.join(process.cwd(), config.dst);
 const {
-	env: { NODE_ENV }
+    env: { NODE_ENV }
 } = process;
 
 export default async () => {
-	if (await !fs.exists(dstDir)) {
-		await fs.mkdir(dstDir);
-	}
+    if (await !fs.exists(dstDir)) {
+        await fs.mkdir(dstDir);
+    }
 
-	await fs.writeFile(
-		libpath.join(dstDir, 'index.js'),
-		await new Promise((resolve, reject) => {
-			const src = libpath.join(process.cwd(), 'src/index.jsx');
+    await fs.writeFile(
+        libpath.join(dstDir, 'index.js'),
+        await new Promise((resolve, reject) => {
+            const src = libpath.join(process.cwd(), 'src/index.jsx');
 
-			browserify({
-				extensions: ['.jsx']
-			})
-				.add(src)
-				.transform(babelify)
-				.bundle((err, bundled) => {
-					if (err) {
-						reject(err);
-					} else {
-						let str = bundled.toString();
+            browserify({
+                extensions: ['.jsx']
+            })
+                .add(src)
+                .transform(babelify)
+                .bundle((err, bundled) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        let str = bundled.toString();
 
-						if (NODE_ENV === 'production') {
-							const { code, error } = uglifyjs.minify(str);
+                        if (NODE_ENV === 'production') {
+                            const { code, error } = uglifyjs.minify(str);
 
-							if (error) {
-								reject(error);
-							} else {
-								str = code;
-							}
-						}
+                            if (error) {
+                                reject(error);
+                            } else {
+                                str = code;
+                            }
+                        }
 
-						resolve(str);
-					}
-				});
-		}),
-		{ encoding: 'utf-8' }
-	);
+                        resolve(str);
+                    }
+                });
+        }),
+        { encoding: 'utf-8' }
+    );
 
-	await fs.writeFile(
-		libpath.join(dstDir, 'index.html'),
-		`<!DOCTYPE html>${renderStylesToString(
-			renderToString(
-				<html lang='ja'>
-					<config.Head />
-					<config.Body>
-						<div id='root'>
-							<App />
-						</div>
-						<script src='index.js' />
-					</config.Body>
-				</html>
-			)
-		)}`
-	);
+    await fs.writeFile(
+        libpath.join(dstDir, 'index.html'),
+        `<!DOCTYPE html>${renderStylesToString(
+            renderToString(
+                <html lang='ja'>
+                    <config.Head />
+                    <config.Body>
+                        <div id='root'>
+                            <App />
+                        </div>
+                        <script src='index.js' />
+                    </config.Body>
+                </html>
+            )
+        )}`
+    );
 };

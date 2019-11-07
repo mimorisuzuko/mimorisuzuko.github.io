@@ -1,5 +1,5 @@
 import build from './build-func';
 
 (async () => {
-	await build();
+    await build();
 })().catch(console.error);
