@@ -75,7 +75,7 @@ const App = () => (
 								},
 								{
 									iconClassName: 'fa fa-envelope',
-									contentJsx: 'hrky0206(at)gmail.com'
+									contentJsx: 'm(at)mimorisuzu.co'
 								},
 								{
 									iconClassName: 'fa fa-graduation-cap',
@@ -168,11 +168,15 @@ const App = () => (
 								},
 								{
 									iconClassName: 'fas fa-heart',
-									contentJsx: 'JavaScript; React; Electron'
+									contentJsx: 'JavaScript (React; Electron)'
 								},
 								{
 									iconClassName: 'fas fa-heart',
-									contentJsx: 'Voice actress; IDOL'
+									contentJsx: (
+										<>
+											Voice actress (<a href='https://hibiki-cast.jp/hibiki_f/mimori_suzuko/'>Suzuko Mimori</a>); IDOL (<a href='https://www.hinatazaka46.com/s/official/artist/6'>Kyoko Saito</a>; <a href='https://wa-suta.world/profile/member.php?id=1000943'>Ruka Mishina</a>)
+										</>
+									)
 								}
 							])}
 						</ul>
