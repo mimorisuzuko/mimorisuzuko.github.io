@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
 import { pinkColor } from './style';
-import moment from 'moment';
 import autobind from 'autobind-decorator';
+import { getUsbVersion } from '../shared/funcs';
 
 const linkBaseStyke = css({
     color: 'inherit',
@@ -16,33 +16,15 @@ const linkBaseStyke = css({
 });
 
 class Nav extends Component {
-    static getUsbVersion() {
-        const current = new Date();
-        const currentYear = current.getFullYear();
-        const currentBirthday = moment(`${currentYear}0206`);
-        const a = currentYear - 1995;
-        const b = currentBirthday.diff(current, 'seconds');
-        const c = currentBirthday.diff(`${currentYear - 1}0206`, 'seconds');
-        const d = (a - b / c).toFixed(2);
-
-        return `USB${d}`;
-    }
-
     constructor() {
         super();
 
-        const usbVersion = Nav.getUsbVersion();
-
-        if (typeof document !== 'undefined') {
-            document.title = usbVersion;
-        }
-
-        this.state = { usbVersion };
+        this.state = { usbVersion: getUsbVersion() };
     }
 
     @autobind
     loop() {
-        const usbVersion = Nav.getUsbVersion();
+        const usbVersion = getUsbVersion();
 
         document.title = usbVersion;
         this.setState({ usbVersion }, () => requestAnimationFrame(this.loop));

@@ -1,11 +1,12 @@
 import React from 'react';
 import { css } from 'emotion';
+import {getUsbVersion} from './shared/funcs';
 
 const Head = () => (
     <head>
         <meta charSet='utf-8' />
         <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-        <title>USB00.00</title>
+        <title>{getUsbVersion()}</title>
         <link
             rel='stylesheet'
             href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css'
