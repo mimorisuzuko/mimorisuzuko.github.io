@@ -1,6 +1,6 @@
 import React from 'react';
 import { css } from 'emotion';
-import {getUsbVersion} from './shared/funcs';
+import { getUsbVersion } from './shared/funcs';
 
 const Head = () => (
     <head>
