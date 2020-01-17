@@ -88,7 +88,15 @@ const renderPublicationEn = (txt) => (
                     );
                 }
 
-                return <li>{ret}</li>;
+                return (
+                    <li
+                        className={css({
+                            overflowWrap: 'break-word'
+                        })}
+                    >
+                        {ret}
+                    </li>
+                );
             }
         )}
     </ol>
@@ -189,7 +197,15 @@ const renderPublicationJa = (txt) => (
                     );
                 }
 
-                return <li>{ret}</li>;
+                return (
+                    <li
+                        className={css({
+                            overflowWrap: 'break-word'
+                        })}
+                    >
+                        {ret}
+                    </li>
+                );
             }
         )}
     </ol>
