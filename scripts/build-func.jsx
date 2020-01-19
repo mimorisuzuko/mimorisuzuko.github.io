@@ -63,6 +63,19 @@ export default async () => {
                             <App />
                         </div>
                         <script src='index.js' />
+                        {NODE_ENV === 'development' ? (
+                            <script
+                                dangerouslySetInnerHTML={{
+                                    __html: `
+                            (new WebSocket('ws://0.0.0.0:3001')).addEventListener('message', ({ data }) => {
+                                if (data === 'reload') {
+                                    document.location.reload();
+                                }
+                            })
+                            `
+                                }}
+                            />
+                        ) : null}
                     </config.Body>
                 </html>
             )

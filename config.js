@@ -31,6 +31,7 @@ const Body = ({ children }) => (
 
 export default {
     dst: './',
+    src: 'src',
     Head,
     Body
 };
