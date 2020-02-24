@@ -1,60 +1,44 @@
-import liveServer from 'live-server';
-import chokidar from 'chokidar';
+import express from 'express';
+import open from 'open';
 import libpath from 'path';
-import { exec } from 'child_process';
+import { Server } from 'ws';
+import chokidar from 'chokidar';
 import config from '../config';
+import build from './build-func';
 
-class Builder {
-    constructor() {
-        this.canBuild = true;
-    }
+const app = express();
+const ws = new Server({ port: 3001 });
+let promises = [];
 
-    async build() {
-        const { canBuild } = this;
+app.use('/', express.static(libpath.join(process.cwd(), config.dst)));
 
-        if (canBuild) {
-            this.canBuild = false;
+app.listen(3000, async () => {
+    await build();
+    await open('http://0.0.0.0:3000');
 
-            return new Promise((resolve, reject) => {
-                exec('yarn build', (err, stdout, stderr) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        resolve({ stdout, stderr });
-                    }
-                });
-            })
-                .then(({ stdout, stderr }) => {
-                    console.log('🙆‍  Succeeded to build');
-                    console.log(`Stdout: ${stdout}`);
-                    console.log(`Stderr: ${stderr}`);
-                })
-                .catch((err) => {
-                    console.log('🙅‍  Failed to build');
-                    console.log(`Err: ${err}`);
-                })
-                .finally(() => {
-                    this.canBuild = true;
-                });
-        }
-    }
-}
-
-const builder = new Builder();
-
-(async () => {
-    await builder.build();
-
-    liveServer.start({
-        port: 3000,
-        root: libpath.join(process.cwd(), config.dst)
-    });
     chokidar
-        .watch(libpath.join(process.cwd(), 'src/'), {
+        .watch(libpath.join(process.cwd(), config.src), {
             ignored: /(^|[/\\])\../,
             persistent: true
         })
         .on('change', () => {
-            builder.build();
+            promises.push(async () => {
+                await build();
+                ws.clients.forEach((a) => a.send('reload'));
+            });
         });
-})().catch(console.error);
+});
+
+const watch = async () => {
+    const last = promises.pop();
+
+    if (last) {
+        await last();
+    }
+
+    promises = [];
+
+    setTimeout(watch, 1000);
+};
+
+watch();
