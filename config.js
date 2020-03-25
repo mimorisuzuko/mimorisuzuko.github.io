@@ -22,7 +22,7 @@ const Body = ({ children }) => (
     <body
         className={css({
             fontFamily:
-                '"Helvetica Neue", Helvetica, Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif'
+                '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif'
         })}
     >
         {children}

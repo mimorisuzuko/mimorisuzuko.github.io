@@ -4,7 +4,6 @@ import Nav from './Nav';
 import { pinkColor } from './style';
 import lodashMap from 'lodash/map';
 import Publications from './Publications';
-import News from './News';
 import Img from './components/Img';
 
 const FaListItem = ({ icon, children }) => (
@@ -96,8 +95,15 @@ const App = () => (
                                 },
                                 {
                                     iconClassName: 'fa fa-briefcase',
-                                    contentJsx:
-                                        'ex-Wantedly, Inc.; internship; web frontend'
+                                    contentJsx: (
+                                        <>
+                                            ex-Wantedly, Inc.;{' '}
+                                            <a href='https://www.wantedly.com/projects/100705'>
+                                                internship
+                                            </a>
+                                            ; web frontend
+                                        </>
+                                    )
                                 },
                                 {
                                     iconClassName: 'fa fa-briefcase',
@@ -197,8 +203,40 @@ const App = () => (
             </div>
             <h2 id='publications'>Publications</h2>
             <Publications />
-            <h2 id='news'>News</h2>
-            <News />
+            <h2 id='awards'>Awards</h2>
+            <ul>
+                <li>
+                    Jazztronik・野崎良太賞, team-kite（山田開斗，<b>薄羽大樹</b>
+                    ）,{' '}
+                    <a href='http://www.billboard-japan.com/hack2016'>
+                        LIVE MUSIC HACKASONG
+                    </a>
+                    , 2017.
+                </li>
+            </ul>
+            <h2 id='others'>Others</h2>
+            <ul>
+                <li>
+                    エンボディパイプ椅子（mactkg，kwzr，<b>mimorisuzuko</b>)
+                    として
+                    <a href='http://isucon.net/archives/48712866.html'>
+                        ISUCON6
+                    </a>
+                    の本戦出場
+                </li>
+                <li>
+                    <a href='https://dailyportalz.jp/kiji/171005200841'>
+                        ABPro2017
+                    </a>
+                    に参加
+                </li>
+                <li>
+                    2018年度の明治大学オープンキャンパスで
+                    <a href='https://www.facebook.com/hrky0206/videos/1887665261486337/'>
+                        ドローンを飛ばす
+                    </a>
+                </li>
+            </ul>
         </main>
         <script
             defer

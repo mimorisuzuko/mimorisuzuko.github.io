@@ -59,8 +59,11 @@ class Nav extends Component {
                 <a href='#publications' className={linkBaseStyke}>
                     Publications
                 </a>
-                <a href='#news' className={linkBaseStyke}>
-                    News
+                <a href='#awards' className={linkBaseStyke}>
+                    Awards
+                </a>
+                <a href='#others' className={linkBaseStyke}>
+                    Others
                 </a>
             </nav>
         );
