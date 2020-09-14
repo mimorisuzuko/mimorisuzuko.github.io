@@ -78,7 +78,7 @@ const App = () => (
                                 },
                                 {
                                     iconClassName: 'fa fa-graduation-cap',
-                                    contentJsx: 'Meiji University (D1)'
+                                    contentJsx: 'Meiji University (D2)'
                                 },
                                 {
                                     iconClassName: 'fa fa-flask',
@@ -152,14 +152,6 @@ const App = () => (
                                     contentJsx: (
                                         <a href='https://www.wantedly.com/users/17860447'>
                                             Wantedly
-                                        </a>
-                                    )
-                                },
-                                {
-                                    iconClassName: 'fas fa-external-link-alt',
-                                    contentJsx: (
-                                        <a href='http://mimorisuzuko.hatenablog.com/'>
-                                            Blog
                                         </a>
                                     )
                                 }
