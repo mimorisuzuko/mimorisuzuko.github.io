@@ -9,6 +9,8 @@ import paperDomesticConfWithReview from './bibs/paper-domestic-conf-w-review.bib
 import paperInternationalConfWithReview from './bibs/paper-international-conf-w-review.bib';
 import posterAndDemoDomesticConf from './bibs/poster-and-demo-domestic-conf.bib';
 import posterAndDemoInternationalConfWithReview from './bibs/poster-and-demo-international-conf-w-review.bib';
+import internationalJournalWithReview from './bibs/international-journal-w-review.bib';
+let pubCnt = 1;
 
 const isMe = (name) => {
     return (
@@ -22,7 +24,7 @@ const isMe = (name) => {
  * @param {string} filename
  */
 const renderPublicationEn = (txt) => (
-    <ol>
+    <ol start={pubCnt}>
         {lodashMap(
             bibtex.toJSON(txt),
             ({
@@ -39,6 +41,8 @@ const renderPublicationEn = (txt) => (
                     _miyashitacomurl_
                 }
             }) => {
+                pubCnt += 1;
+
                 const ret = [];
                 const authors = author.split(' and ');
                 const { length: authorsLength } = authors;
@@ -103,7 +107,7 @@ const renderPublicationEn = (txt) => (
 );
 
 const renderPublicationJa = (txt) => (
-    <ol>
+    <ol start={pubCnt}>
         {lodashMap(
             bibtex.toJSON(txt),
             ({
@@ -123,6 +127,8 @@ const renderPublicationJa = (txt) => (
                     _pressrelease_
                 }
             }) => {
+                pubCnt += 1;
+
                 const ret = [];
                 const authors = author.split(' and ');
                 const { length: authorsLength } = authors;
@@ -219,6 +225,8 @@ const Publications = () => (
             }
         })}
     >
+        <h3>International journal w/ review</h3>
+        {renderPublicationEn(internationalJournalWithReview)}
         <h3>Paper at international conference w/ review</h3>
         {renderPublicationEn(paperInternationalConfWithReview)}
         <h3>Poster and demo at international conference w/ review</h3>
