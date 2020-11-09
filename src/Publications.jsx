@@ -106,6 +106,110 @@ const renderPublicationEn = (txt) => (
     </ol>
 );
 
+/**
+ * @param {string} filename
+ */
+const renderJournalEn = (txt) => (
+    <ol start={pubCnt}>
+        {lodashMap(
+            bibtex.toJSON(txt),
+            ({
+                entryTags: {
+                    author,
+                    title,
+                    booktitle,
+                    journal,
+                    series,
+                    volume,
+                    number,
+                    pages,
+                    numpages,
+                    year,
+                    url,
+                    _others_,
+                    _miyashitacomurl_
+                }
+            }) => {
+                pubCnt += 1;
+
+                const ret = [];
+                const authors = author.split(' and ');
+                const { length: authorsLength } = authors;
+
+                lodashEach(authors, (a, i) => {
+                    const [b, c] = a.split(', ');
+                    const name = `${c} ${b}`;
+                    const last = i === authorsLength - 1;
+
+                    if (last) {
+                        ret.push('and ');
+                    }
+
+                    ret.push(
+                        isMe(name) ? <b>{name}</b> : name,
+                        last ? '. ' : ', '
+                    );
+                });
+
+                ret.push(`${title}. `);
+
+                if (journal) {
+                    ret.push(<i>{journal}</i>);
+                }
+
+                if (booktitle) {
+                    ret.push(<i>{booktitle}</i>);
+                }
+
+                if (volume) {
+                    ret.push(`, Vol. ${volume}`);
+                }
+
+                if (number) {
+                    ret.push(`, No. ${number}`);
+                }
+
+                if (series) {
+                    ret.push(` (${series})`);
+                }
+
+                if (pages) {
+                    ret.push(`, ${pages}`);
+                } else if (numpages) {
+                    ret.push(`, ${numpages} pages`);
+                }
+
+                ret.push(`, ${year}. `);
+                ret.push(<a href={url}>{url}</a>);
+
+                if (_others_) {
+                    ret.push(` [${_others_}]`);
+                }
+
+                if (_miyashitacomurl_) {
+                    ret.push(
+                        ' ',
+                        <a href={_miyashitacomurl_}>
+                            [<i className='far fa-file-pdf' />
+                            PDF]
+                        </a>
+                    );
+                }
+
+                return (
+                    <li
+                        className={css({
+                            overflowWrap: 'break-word'
+                        })}
+                    >
+                        {ret}
+                    </li>
+                );
+            }
+        )}
+    </ol>
+);
+
 const renderPublicationJa = (txt) => (
     <ol start={pubCnt}>
         {lodashMap(
@@ -226,7 +330,7 @@ const Publications = () => (
         })}
     >
         <h3>International journal w/ review</h3>
-        {renderPublicationEn(internationalJournalWithReview)}
+        {renderJournalEn(internationalJournalWithReview)}
         <h3>Paper at international conference w/ review</h3>
         {renderPublicationEn(paperInternationalConfWithReview)}
         <h3>Poster and demo at international conference w/ review</h3>
