@@ -7,7 +7,7 @@ export const getUsbVersion = () => {
     const a = currentYear - 1995;
     const b = currentBirthday.diff(current, 'seconds');
     const c = currentBirthday.diff(`${currentYear - 1}0206`, 'seconds');
-    const d = (a - b / c).toFixed(2);
+    const d = Math.floor((a - b / c) * 100) / 100;
 
     return `USB${d}`;
 };
