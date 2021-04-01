@@ -4,8 +4,8 @@
   "description": "Me",
   "main": "index.html",
   "scripts": {
-    "build": "NODE_ENV=production npx babel-node scripts/build.jsx",
-    "watch": "NODE_ENV=development npx babel-node scripts/watch.js"
+    "build": "BABEL_DISABLE_CACHE=1 NODE_ENV=production npx babel-node scripts/build.jsx",
+    "watch": "BABEL_DISABLE_CACHE=1 NODE_ENV=development npx babel-node scripts/watch.js"
   },
   "keywords": [],
   "author": "Hiroki Usuba <hrky0206@gmail.com> (http://mimorisuzuko.github.io/)",
