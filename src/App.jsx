@@ -78,7 +78,7 @@ const App = () => (
                                 },
                                 {
                                     iconClassName: 'fa fa-graduation-cap',
-                                    contentJsx: 'Meiji University (D2)'
+                                    contentJsx: 'Meiji University (D3)'
                                 },
                                 {
                                     iconClassName: 'fa fa-flask',
@@ -162,7 +162,7 @@ const App = () => (
                                 {
                                     iconClassName: 'fas fa-heart',
                                     contentJsx:
-                                        'Human-Computer Interaction; Pointing; GUIs'
+                                        'Human-Computer Interaction; GUIs; Pointing'
                                 },
                                 {
                                     iconClassName: 'fas fa-heart',
@@ -184,7 +184,10 @@ const App = () => (
                                             <a href='https://wa-suta.world/profile/member.php?id=1000943'>
                                                 Ruka Mishina
                                             </a>
-                                            )
+                                            );{' '}
+                                            <a href='https://twitter.com/mizuyuno_'>
+                                                yunocy
+                                            </a>
                                         </>
                                     )
                                 }
