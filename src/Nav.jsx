@@ -75,7 +75,13 @@ class Nav extends Component {
                     <Skewed>Publications</Skewed>
                 </a>
                 <a href='#awards'>
-                    <Skewed> Awards</Skewed>
+                    <Skewed>Awards</Skewed>
+                </a>
+                <a href='#education'>
+                    <Skewed>Education</Skewed>
+                </a>
+                <a href='#work'>
+                    <Skewed>Work</Skewed>
                 </a>
                 <a href='#others'>
                     <Skewed>Others</Skewed>
