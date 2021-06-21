@@ -4,16 +4,39 @@ import { pinkColor } from './style';
 import autobind from 'autobind-decorator';
 import { getUsbVersion } from '../shared/funcs';
 
-const linkBaseStyke = css({
-    color: 'inherit',
-    textDecoration: 'none',
-    display: 'inline-block',
-    borderRight: '1px solid white',
-    padding: '0.625rem 1.1rem',
-    ':hover': {
-        textDecoration: 'underline'
-    }
-});
+const Skewed = ({ children }) => {
+    return (
+        <div
+            className={css({
+                display: 'inline-block',
+                transform: 'skew(-45deg)',
+                padding: '0.5rem 0',
+                color: 'white',
+                marginLeft: -1,
+                ':hover': {
+                    color: pinkColor,
+                    backgroundColor: 'white'
+                }
+            })}
+        >
+            <div
+                className={css({
+                    borderRight: '1px solid white',
+                    padding: '0.625rem 1.1rem'
+                })}
+            >
+                <div
+                    className={css({
+                        transform: 'skew(45deg)',
+                        textDecoration: 'none'
+                    })}
+                >
+                    {children}
+                </div>
+            </div>
+        </div>
+    );
+};
 
 class Nav extends Component {
     constructor() {
@@ -43,27 +66,32 @@ class Nav extends Component {
             <nav
                 className={css({
                     backgroundColor: pinkColor,
-                    padding: '0.75rem 1.5rem 0.75rem 0',
                     color: 'white'
                 })}
             >
                 <a
                     id='usb-version'
-                    className={css(linkBaseStyke, {
+                    className={css({
                         fontWeight: 600
                     })}
                     href='#'
                 >
-                    {usbVersion}
+                    <Skewed>{usbVersion}</Skewed>
                 </a>
-                <a href='#publications' className={linkBaseStyke}>
-                    Publications
+                <a href='#publications'>
+                    <Skewed>Publications</Skewed>
                 </a>
-                <a href='#awards' className={linkBaseStyke}>
-                    Awards
+                <a href='#awards'>
+                    <Skewed>Awards</Skewed>
                 </a>
-                <a href='#others' className={linkBaseStyke}>
-                    Others
+                <a href='#education'>
+                    <Skewed>Education</Skewed>
+                </a>
+                <a href='#work'>
+                    <Skewed>Work</Skewed>
+                </a>
+                <a href='#others'>
+                    <Skewed>Others</Skewed>
                 </a>
             </nav>
         );

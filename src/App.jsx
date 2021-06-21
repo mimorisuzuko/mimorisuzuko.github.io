@@ -91,28 +91,6 @@ const App = () => (
                                 {
                                     iconClassName: 'fa fa-briefcase',
                                     contentJsx:
-                                        'ex-YUKAI Engineering Inc.; part time'
-                                },
-                                {
-                                    iconClassName: 'fa fa-briefcase',
-                                    contentJsx: (
-                                        <>
-                                            ex-Wantedly, Inc.;{' '}
-                                            <a href='https://www.wantedly.com/projects/100705'>
-                                                internship
-                                            </a>
-                                            ; web frontend
-                                        </>
-                                    )
-                                },
-                                {
-                                    iconClassName: 'fa fa-briefcase',
-                                    contentJsx:
-                                        'ex-Knocknote Inc.; part time; web frontend'
-                                },
-                                {
-                                    iconClassName: 'fa fa-briefcase',
-                                    contentJsx:
                                         'Yahoo! JAPAN Research; internship'
                                 },
                                 {
@@ -207,6 +185,47 @@ const App = () => (
                         LIVE MUSIC HACKASONG
                     </a>
                     , 2017.
+                </li>
+            </ul>
+            <h2 id='education'>Education</h2>
+            <ul>
+                <li>
+                    Bachelor of Science, Meiji University, supervised by Homei
+                    Miyashita, 2014/4 -- 2017/3.
+                </li>
+                <li>
+                    Master of Science, Meiji University, supervised by Homei
+                    Miyashita, 2017/4 -- 2019/3.
+                </li>
+            </ul>
+            <h2 id='work'>Work</h2>
+            <ul>
+                <li>
+                    YUKAI Engineering Inc., JavaScript, Part time, 2016/4 --
+                    2017/12.
+                </li>
+                <li>
+                    Yamaha Corporation, Drone control module (JavaScript),
+                    Subcontracting, 2017/10 -- 2017/12.
+                </li>
+                <li>
+                    Wantedly, Inc.,{' '}
+                    <a href='https://www.wantedly.com/projects/100705'>
+                        サマーインターン2017：ReactでつくるWebフロントエンドコース
+                    </a>
+                    , Internship, 2017/7.
+                </li>
+                <li>
+                    KNOCKNOTE Inc., Web application (JavaScript), Part time,
+                    2018/1 -- 2019/3
+                </li>
+                <li>
+                    YUKAI Engineering Inc., JavaScript, Part time, 2016/4 --
+                    2017/12.
+                </li>
+                <li>
+                    YUKAI Engineering Inc., JavaScript, Subcontracting, 2019/11
+                    -- 2020/7.
                 </li>
             </ul>
             <h2 id='others'>Others</h2>
