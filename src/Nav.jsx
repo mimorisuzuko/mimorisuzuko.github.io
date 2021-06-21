@@ -9,10 +9,10 @@ const Skewed = ({ children }) => {
         <div
             className={css({
                 display: 'inline-block',
-                borderRight: '1px solid white',
-                padding: '0.625rem 1.1rem',
                 transform: 'skew(-45deg)',
+                padding: '0.5rem 0',
                 color: 'white',
+                marginLeft: -1,
                 ':hover': {
                     color: pinkColor,
                     backgroundColor: 'white'
@@ -21,11 +21,18 @@ const Skewed = ({ children }) => {
         >
             <div
                 className={css({
-                    transform: 'skew(45deg)',
-                    textDecoration: 'none'
+                    borderRight: '1px solid white',
+                    padding: '0.625rem 1.1rem'
                 })}
             >
-                {children}
+                <div
+                    className={css({
+                        transform: 'skew(45deg)',
+                        textDecoration: 'none'
+                    })}
+                >
+                    {children}
+                </div>
             </div>
         </div>
     );
