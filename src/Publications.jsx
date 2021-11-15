@@ -110,6 +110,8 @@ const renderJournalEn = ({
         series,
         volume,
         number,
+        articleno,
+        issue_date,
         pages,
         numpages,
         year,
@@ -158,6 +160,10 @@ const renderJournalEn = ({
         ret.push(` (${series})`);
     }
 
+    if (articleno) {
+        ret.push(`, Article ${articleno} (${issue_date})`);
+    }
+
     if (pages) {
         ret.push(`, ${pages}`);
     } else if (numpages) {
@@ -199,10 +205,10 @@ const renderJournals = (txt) => (
     <ol start={pubCnt}>
         {lodashMap(bibtex.toJSON(txt), (json) => {
             const {
-                entryTags: { title }
+                entryTags: { journal }
             } = json;
 
-            return /[\u4E00-\u9FAF\u3040-\u3096\u30A1-\u30FA]/.test(title)
+            return /[\u4E00-\u9FAF\u3040-\u3096\u30A1-\u30FA]/.test(journal)
                 ? renderPublicationJa(json)
                 : renderJournalEn(json);
         })}
