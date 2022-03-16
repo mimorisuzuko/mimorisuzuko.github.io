@@ -89,11 +89,6 @@ const App = () => (
                                     )
                                 },
                                 {
-                                    iconClassName: 'fa fa-briefcase',
-                                    contentJsx:
-                                        'Yahoo! JAPAN Research; internship'
-                                },
-                                {
                                     iconClassName: 'fab fa-twitter',
                                     contentJsx: (
                                         <a href='https://twitter.com/HirokiUsuba'>
@@ -197,6 +192,10 @@ const App = () => (
                     Master of Science, Meiji University, supervised by Homei
                     Miyashita, 2017/4 -- 2019/3.
                 </li>
+                <li>
+                    Doctor of Science, Meiji University, supervised by Homei
+                    Miyashita, 2019/4 -- 2022/3.
+                </li>
             </ul>
             <h2 id='work'>Work</h2>
             <ul>
@@ -226,6 +225,11 @@ const App = () => (
                 <li>
                     YUKAI Engineering Inc., JavaScript, Subcontracting, 2019/11
                     -- 2020/7.
+                </li>
+                <li>Yahoo Japan Research, Internship, 2018/9 -- 2021/9.</li>
+                <li>
+                    Taste & Aroma Strategic Research Institute, JavaScript,
+                    Subcontracting, 2022/1 -- 2022/3.
                 </li>
             </ul>
             <h2 id='others'>Others</h2>
