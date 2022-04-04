@@ -73,20 +73,13 @@ const App = () => (
                                     contentJsx: '1995/02/06'
                                 },
                                 {
+                                    iconClassName: 'fa fa-briefcase',
+                                    contentJsx:
+                                        'Yahoo Japan Corporation (Yahoo Japan Research)'
+                                },
+                                {
                                     iconClassName: 'fa fa-envelope',
                                     contentJsx: 'm(at)mimorisuzu.co'
-                                },
-                                {
-                                    iconClassName: 'fa fa-graduation-cap',
-                                    contentJsx: 'Meiji University (D3)'
-                                },
-                                {
-                                    iconClassName: 'fa fa-flask',
-                                    contentJsx: (
-                                        <a href='https://miyashita.com'>
-                                            Miyashita Lab
-                                        </a>
-                                    )
                                 },
                                 {
                                     iconClassName: 'fab fa-twitter',
