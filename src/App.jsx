@@ -75,7 +75,7 @@ const App = () => (
                                 {
                                     iconClassName: 'fa fa-briefcase',
                                     contentJsx:
-                                        'Yahoo Japan Corporation (Yahoo Japan Research)'
+                                        'Yahoo Japan Corporation (Yahoo! Japan Research)'
                                 },
                                 {
                                     iconClassName: 'fa fa-envelope',
@@ -219,6 +219,7 @@ const App = () => (
                     YUKAI Engineering Inc., JavaScript, Subcontracting, 2019/11
                     -- 2020/7.
                 </li>
+                <li>Meiji University, Research Associate, 2019/4 -- 2022/3.</li>
                 <li>Yahoo Japan Research, Internship, 2018/9 -- 2021/9.</li>
                 <li>
                     Taste & Aroma Strategic Research Institute, JavaScript,
