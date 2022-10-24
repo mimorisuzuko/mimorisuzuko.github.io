@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import Nav from './Nav';
 import { pinkColor } from './style';
 import lodashMap from 'lodash/map';
@@ -23,45 +23,47 @@ const App = () => (
     <>
         <Nav />
         <main
-            className={css({
-                maxWidth: 960,
-                marginLeft: 'auto',
-                marginRight: 'auto',
-                padding: '1rem',
-                boxSizing: 'border-box',
-                a: {
-                    color: pinkColor
-                },
-                h2: {
-                    color: pinkColor
+            className={css`
+                max-width: 960px;
+                margin-left: auto;
+                margin-right: auto;
+                padding: 1rem;
+                box-sizing: border-box;
+
+                a {
+                    color: ${pinkColor};
                 }
-            })}
+
+                h2 {
+                    color: ${pinkColor};
+                }
+            `}
         >
             <div className='row'>
                 <div className='col-md-4'>
                     <div className='box'>
                         <Img
                             src='assets/me.jpg'
-                            css={css({
-                                display: 'block',
-                                width: '100%',
-                                borderRadius: '50%'
-                            })}
+                            className={css`
+                                display: block;
+                                width: 100%;
+                                border-radius: 50%;
+                            `}
                         />
                     </div>
                 </div>
                 <div className='col-md-8'>
                     <div className='box'>
                         <p
-                            className={css({
-                                fontSize: '2rem'
-                            })}
+                            className={css`
+                                font-size: 2rem;
+                            `}
                         >
                             Hiroki Usuba /{' '}
                             <small
-                                className={css({
-                                    color: 'gray'
-                                })}
+                                className={css`
+                                    color: gray;
+                                `}
                             >
                                 薄羽 大樹
                             </small>
@@ -74,8 +76,18 @@ const App = () => (
                                 },
                                 {
                                     iconClassName: 'fa fa-briefcase',
-                                    contentJsx:
-                                        'Yahoo Japan Corporation (Yahoo! Japan Research)'
+                                    contentJsx: (
+                                        <>
+                                            <span>
+                                                Yahoo Japan Corporation (
+                                            </span>
+                                            <a href='https://randd.yahoo.co.jp/en/members/52'>
+                                                Yahoo! Japan Research Project
+                                                Researcher
+                                            </a>
+                                            <span>)</span>
+                                        </>
+                                    )
                                 },
                                 {
                                     iconClassName: 'fa fa-envelope',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderStylesToString } from 'emotion-server';
+import { renderStylesToString } from '@emotion/server';
 import { renderToString } from 'react-dom/server';
 import fs from 'fs-extra';
 import libpath from 'path';

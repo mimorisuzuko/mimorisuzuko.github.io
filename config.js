@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { getUsbVersion } from './shared/funcs';
 
 const Head = () => (
@@ -20,10 +20,10 @@ const Head = () => (
 
 const Body = ({ children }) => (
     <body
-        className={css({
-            fontFamily:
-                '"Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif'
-        })}
+        className={css`
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN',
+                'Hiragino Sans', Meiryo, sans-serif;
+        `}
     >
         {children}
     </body>

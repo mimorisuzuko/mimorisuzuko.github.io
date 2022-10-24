@@ -2,9 +2,8 @@ import React from 'react';
 import libpath from 'path';
 import config from '../../config';
 import fs from 'fs';
-import { css } from 'emotion';
 
-const Img = ({ src, css: style }) => {
+const Img = ({ src, className }) => {
     if (typeof document === 'undefined') {
         const dst = libpath.join(process.cwd(), config.dst, src);
         const dstDir = libpath.dirname(dst);
@@ -20,7 +19,7 @@ const Img = ({ src, css: style }) => {
         );
     }
 
-    return <img src={src} className={css(style)} />;
+    return <img src={src} className={className} />;
 };
 
 export default Img;

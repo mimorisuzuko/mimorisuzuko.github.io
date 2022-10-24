@@ -2,7 +2,7 @@ import React from 'react';
 import bibtex from 'bibtex-parse-js';
 import lodashMap from 'lodash/map';
 import lodashEach from 'lodash/forEach';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import oralDomesticConf from './bibs/oral-domestic-conf.bib';
 import paperDomesticConfWithReview from './bibs/paper-domestic-conf-w-review.bib';
 import paperInternationalConfWithReview from './bibs/paper-international-conf-w-review.bib';
@@ -83,9 +83,9 @@ const renderPublicationEn = ({
 
     return (
         <li
-            className={css({
-                overflowWrap: 'break-word'
-            })}
+            className={css`
+                overflow-wrap: break-word;
+            `}
         >
             {ret}
         </li>
@@ -189,9 +189,9 @@ const renderJournalEn = ({
 
     return (
         <li
-            className={css({
-                overflowWrap: 'break-word'
-            })}
+            className={css`
+                overflow-wrap: break-word;
+            `}
         >
             {ret}
         </li>
@@ -307,9 +307,9 @@ const renderPublicationJa = ({
 
     return (
         <li
-            className={css({
-                overflowWrap: 'break-word'
-            })}
+            className={css`
+                overflow-wrap: break-word;
+            `}
         >
             {ret}
         </li>
@@ -324,11 +324,21 @@ const renderPublicationsJa = (txt) => (
 
 const Publications = () => (
     <div
-        className={css({
-            svg: {
-                paddingRight: 3
+        className={css`
+            svg {
+                padding-right: 3px;
             }
-        })}
+
+            summary {
+                &::marker {
+                    text-align: center;
+                }
+
+                h3 {
+                    display: inline-block;
+                }
+            }
+        `}
     >
         <h3>Journal w/ review</h3>
         {renderJournals(journalWithReview)}
@@ -338,10 +348,18 @@ const Publications = () => (
         {renderPublicationsEn(posterAndDemoInternationalConfWithReview)}
         <h3>Paper at domestic conference w/ review</h3>
         {renderPublicationsJa(paperDomesticConfWithReview)}
-        <h3>Oral presentation at domestic conference</h3>
-        {renderPublicationsJa(oralDomesticConf)}
-        <h3>Poster and demo at domestic conference</h3>
-        {renderPublicationsJa(posterAndDemoDomesticConf)}
+        <details>
+            <summary>
+                <h3>Oral presentation at domestic conference</h3>
+            </summary>
+            {renderPublicationsJa(oralDomesticConf)}
+        </details>
+        <details>
+            <summary>
+                <h3>Poster and demo at domestic conference</h3>
+            </summary>
+            {renderPublicationsJa(posterAndDemoDomesticConf)}
+        </details>
     </div>
 );
 

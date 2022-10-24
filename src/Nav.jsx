@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { pinkColor } from './style';
 import autobind from 'autobind-decorator';
 import { getUsbVersion } from '../shared/funcs';
@@ -7,29 +7,30 @@ import { getUsbVersion } from '../shared/funcs';
 const Skewed = ({ children }) => {
     return (
         <div
-            className={css({
-                display: 'inline-block',
-                transform: 'skew(-45deg)',
-                padding: '0.5rem 0',
-                color: 'white',
-                marginLeft: -1,
-                ':hover': {
-                    color: pinkColor,
-                    backgroundColor: 'white'
+            className={css`
+                display: inline-block;
+                transform: skew(-45deg);
+                padding: 0.5rem 0;
+                color: white;
+                margin-left: -1;
+
+                &:hover {
+                    color: ${pinkColor};
+                    background-color: white;
                 }
-            })}
+            `}
         >
             <div
-                className={css({
-                    borderRight: '1px solid white',
-                    padding: '0.625rem 1.1rem'
-                })}
+                className={css`
+                    border-right: 1px solid white;
+                    padding: 0.625rem 1.1rem;
+                `}
             >
                 <div
-                    className={css({
-                        transform: 'skew(45deg)',
-                        textDecoration: 'none'
-                    })}
+                    className={css`
+                        transform: skew(45deg);
+                        text-decoration: none;
+                    `}
                 >
                     {children}
                 </div>
@@ -64,16 +65,16 @@ class Nav extends Component {
 
         return (
             <nav
-                className={css({
-                    backgroundColor: pinkColor,
-                    color: 'white'
-                })}
+                className={css`
+                    background-color: ${pinkColor};
+                    color: white;
+                `}
             >
                 <a
                     id='usb-version'
-                    className={css({
-                        fontWeight: 600
-                    })}
+                    className={css`
+                        font-weight: 600;
+                    `}
                     href='#'
                 >
                     <Skewed>{usbVersion}</Skewed>

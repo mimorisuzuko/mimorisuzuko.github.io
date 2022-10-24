@@ -16,6 +16,7 @@
     "@babel/plugin-proposal-decorators": "^7.4.4",
     "@babel/preset-env": "^7.4.3",
     "@babel/preset-react": "^7.0.0",
+    "@emotion/server": "^11.10.0",
     "autobind-decorator": "^2.4.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-dynamic-import-node": "^2.2.0",
@@ -24,8 +25,6 @@
     "bibtex-parse-js": "^0.0.24",
     "browserify": "^16.2.3",
     "chokidar": "^2.1.5",
-    "emotion": "^10.0.9",
-    "emotion-server": "^10.0.9",
     "eslint": "^5.16.0",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.12.4",
@@ -40,5 +39,7 @@
     "uglify-js": "^3.5.6",
     "ws": "^7.2.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@emotion/css": "^11.10.0"
+  }
 }
