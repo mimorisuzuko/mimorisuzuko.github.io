@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "watch": "next dev",
-    "build": "next build && next export"
+    "build": "next build && next export -o docs/"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",
