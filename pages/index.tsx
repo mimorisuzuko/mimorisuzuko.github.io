@@ -10,6 +10,17 @@ import Publications from '../components/Publications';
 export default function Home() {
     return (
         <div>
+            <style jsx global>{`
+                body {
+                    margin: 0;
+                    font-family: 'Helvetica Neue', Arial,
+                        'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+                        sans-serif;
+                }
+                a {
+                    color: ${Colors.Pink};
+                }
+            `}</style>
             <Script src='https://kit.fontawesome.com/9129381b44.js' />
             <Head>
                 <title>{usbVersion()}</title>
@@ -17,7 +28,6 @@ export default function Home() {
                     name='viewport'
                     content='width=device-width, initial-scale=1.0'
                 />
-                <style>{`body { margin: 0; font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; } a { color: ${Colors.Pink}; }`}</style>
             </Head>
             <Header />
             <div
