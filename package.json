@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "watch": "next dev",
-    "build": "next build && next export -o docs/ && touch docs/.nojekyll && echo 'mimorisuzu.co' > docs/CNAME"
+    "build": "next build && next export -o docs/ && touch docs/.nojekyll && echo 'mimorisuzu.co' > docs/CNAME && rm -rf docs/404.html"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",
