@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { css } from '@emotion/react';
 import bibtex from 'bibtex-parse-js';
 import journalsWithReview from '../shared/bibs/journals-w-review.bib';
@@ -16,6 +16,34 @@ const isMe = (name: string) => {
     );
 };
 
+const renderAuthorEn = (author: string) => {
+    const ret: ReactNode[] = [];
+    const authors = author.split(' and ');
+    const { length: authorsLength } = authors;
+
+    authors.forEach((a, i) => {
+        let name = '';
+
+        if (a.includes(',')) {
+            const [b, c] = a.split(', ');
+
+            name = `${c} ${b}`;
+        } else {
+            name = a;
+        }
+
+        const last = i === authorsLength - 1;
+
+        if (last) {
+            ret.push('and ');
+        }
+
+        ret.push(isMe(name) ? <b>{name}</b> : name, last ? '. ' : ', ');
+    });
+
+    return ret;
+};
+
 const renderPublicationEn = ({
     entryTags: {
         author,
@@ -30,21 +58,7 @@ const renderPublicationEn = ({
         _miyashitacomurl_
     }
 }: Publication) => {
-    const ret = [];
-    const authors = author.split(' and ');
-    const { length: authorsLength } = authors;
-
-    authors.forEach((a, i) => {
-        const [b, c] = a.split(', ');
-        const name = `${c} ${b}`;
-        const last = i === authorsLength - 1;
-
-        if (last) {
-            ret.push('and ');
-        }
-
-        ret.push(isMe(name) ? <b>{name}</b> : name, last ? '. ' : ', ');
-    });
+    const ret = [...renderAuthorEn(author)];
 
     ret.push(`${title}. `);
     ret.push('In ', <i>{booktitle}</i>);
@@ -98,21 +112,7 @@ const renderJournalEn = ({
         _miyashitacomurl_
     }
 }: Publication) => {
-    const ret = [];
-    const authors = author.split(' and ');
-    const { length: authorsLength } = authors;
-
-    authors.forEach((a, i) => {
-        const [b, c] = a.split(', ');
-        const name = `${c} ${b}`;
-        const last = i === authorsLength - 1;
-
-        if (last) {
-            ret.push('and ');
-        }
-
-        ret.push(isMe(name) ? <b>{name}</b> : name, last ? '. ' : ', ');
-    });
+    const ret = [...renderAuthorEn(author)];
 
     ret.push(`${title}. `);
 
