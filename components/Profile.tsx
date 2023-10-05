@@ -11,12 +11,16 @@ const items: {
         jsx: '1995/02/06'
     },
     {
+        iconClassName: 'fa-solid fa-user-graduate',
+        jsx: 'Doctor of Science'
+    },
+    {
         iconClassName: 'fa-solid fa-briefcase',
         jsx: (
             <>
-                Yahoo Japan Corporation (
-                <a href='https://randd.yahoo.co.jp/en/members/52'>
-                    Yahoo! Japan Research Project Researcher
+                LY Corporation (
+                <a href='https://research.lycorp.co.jp/en'>
+                    LY Research Project Researcher
                 </a>
                 )
             </>
@@ -27,8 +31,8 @@ const items: {
         jsx: 'm(at)mimorisuzu.co'
     },
     {
-        iconClassName: 'fa-brands fa-twitter',
-        jsx: <a href='https://twitter.com/HirokiUsuba'>HirokiUsuba</a>
+        iconClassName: 'fa-brands fa-x-twitter',
+        jsx: <a href='https://x.com/HirokiUsuba'>HirokiUsuba</a>
     },
     {
         iconClassName: 'fa-brands fa-facebook',
@@ -53,7 +57,7 @@ const items: {
 ];
 
 const favorites = [
-    'Human-Computer Interaction; GUIs; Pointing',
+    'Human-Computer Interaction; GUIs; Touch interaction',
     'JavaScript (React; Electron)',
     <>
         <a href='https://hibiki-cast.jp/hibiki_f/mimori_suzuko/'>

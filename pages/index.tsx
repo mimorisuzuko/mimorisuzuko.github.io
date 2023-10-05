@@ -98,16 +98,32 @@ export default function Home() {
                         2017/12.
                     </li>
                     <li>
-                        YUKAI Engineering Inc., JavaScript, Subcontracting,
-                        2019/11 -- 2020/7.
+                        YUKAI Engineering Inc., JavaScript,{' '}
+                        <a href='https://github.com/YUKAI/emo-motion-editor'>
+                            Emo Motion Editor
+                        </a>
+                        , Subcontracting, 2019/11 -- 2020/7.
                     </li>
                     <li>
                         Meiji University, Research Associate, 2019/4 -- 2022/3.
                     </li>
-                    <li>Yahoo Japan Research, Internship, 2018/9 -- 2021/9.</li>
+                    <li>
+                        Yahoo Japan Corporation (Yahoo! Japan Research),
+                        Internship, 2018/9 -- 2021/9.
+                    </li>
                     <li>
                         Taste & Aroma Strategic Research Institute, JavaScript,
                         Subcontracting, 2022/1 -- 2022/3.
+                    </li>
+                    <li>
+                        Yahoo Japan Corporation (Yahoo! Japan Research), Project
+                        researcher, 2022/4 -- 2023/9.
+                    </li>
+                    <li>
+                        <b>
+                            LY Corporation (LY Research), Project researcher,
+                            2023/10 -- present.
+                        </b>
                     </li>
                 </ul>
                 <h2 id='others'>Others</h2>
