@@ -103,7 +103,7 @@ export default function Profile() {
                         display: block;
                         border-radius: 50%;
                     `}
-                    src='/me.jpeg'
+                    src='/me.jpg'
                     alt='logo'
                 />
             </div>
