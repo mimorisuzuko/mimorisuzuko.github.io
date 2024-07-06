@@ -16,15 +16,7 @@ const items: {
     },
     {
         iconClassName: 'fa-solid fa-briefcase',
-        jsx: (
-            <>
-                LY Corporation (
-                <a href='https://research.lycorp.co.jp/en'>
-                    LY Research Project Researcher
-                </a>
-                )
-            </>
-        )
+        jsx: 'ITANDI Inc.'
     },
     {
         iconClassName: 'fa-solid fa-envelope',
@@ -49,27 +41,13 @@ const items: {
                 Google Scholar
             </a>
         )
-    },
-    {
-        iconClassName: 'fa-solid fa-link',
-        jsx: <a href='https://www.wantedly.com/id/mimorisuzuko'>Wantedly</a>
     }
 ];
 
 const favorites = [
-    'Human-Computer Interaction; GUIs; Touch interaction',
-    'JavaScript (React; Electron)',
     <>
         <a href='https://hibiki-cast.jp/hibiki_f/mimori_suzuko/'>
             Suzuko Mimori
-        </a>
-        ;{' '}
-        <a href='https://www.hinatazaka46.com/s/official/artist/6'>
-            Kyoko Saito
-        </a>
-        ;{' '}
-        <a href='https://wa-suta.world/profile/detail.php?id=1000943'>
-            Ruka Mishina
         </a>
         ; <a href='https://www.twitch.tv/yunocy'>yunocy</a>
     </>

@@ -120,9 +120,13 @@ export default function Home() {
                         researcher, 2022/4 -- 2023/9.
                     </li>
                     <li>
+                        LY Corporation (LY Research), Project researcher,
+                        2023/10 -- 2024/2.
+                    </li>
+                    <li>
                         <b>
-                            LY Corporation (LY Research), Project researcher,
-                            2023/10 -- present.
+                            ITANDI Inc., Frontend engineer,
+                            2024/3 -- present.
                         </b>
                     </li>
                 </ul>
@@ -147,6 +151,12 @@ export default function Home() {
                             Fly 3D printed drone
                         </a>{' '}
                         at 2018 Meiji University Open Campus
+                    </li>
+                    <li>
+                        Developed{' '}
+                        <a href='https://lydesign.jp/n/n9aa3192089f9'>
+                            Tappy: UX tool to visualize tap success rate
+                        </a>
                     </li>
                 </ul>
             </div>
