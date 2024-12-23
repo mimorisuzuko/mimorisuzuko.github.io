@@ -56,6 +56,13 @@ export default function Home() {
                         </a>
                         , 2017.
                     </li>
+                    <li>
+                        特別賞, <b>UI/UX基盤チーム</b>,{' '}
+                        <a href='https://shanaiho.itandi.co.jp/n/nf34335950e4d'>
+                            ITANDI AWARD 2024
+                        </a>
+                        , 2024.
+                    </li>
                 </ul>
                 <h2 id='education'>Education</h2>
                 <ul>
@@ -156,6 +163,24 @@ export default function Home() {
                         Developed{' '}
                         <a href='https://lydesign.jp/n/n9aa3192089f9'>
                             Tappy: UX tool to visualize tap success rate
+                        </a>
+                    </li>
+                    <li>
+                        Developed{' '}
+                        <a href='https://research.lycorp.co.jp/jp/news/271'>
+                            Tappy for Figma plugin
+                        </a>
+                    </li>
+                    <li>
+                        Employee profile at ITANDI Inc.:{' '}
+                        <a href='https://shanaiho.itandi.co.jp/n/n291564dcfabb'>
+                            【入社エントリ】LINEヤフー研究員からの転身 UI開発の仕組み作り
+                        </a>
+                    </li>
+                    <li>
+                        Introduced my career in Findy Engineer Lab:{' '}
+                        <a href='https://findy-code.io/engineer-lab/careershift-usuba-hiroki'>
+                            なぜUI研究者から不動産テック開発者に転身？ フロントエンドエンジニア・薄羽大樹さんのキャリアの分岐点
                         </a>
                     </li>
                 </ul>
