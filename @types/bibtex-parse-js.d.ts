@@ -15,6 +15,9 @@ type Publication = {
         numpages?: string;
         year: string;
         url: string;
+        eprint?: string;
+        archivePrefix?: string;
+        primaryClass?: string;
         _others_?: string;
         _miyashitacomurl_?: string;
         _videourl_?: string;

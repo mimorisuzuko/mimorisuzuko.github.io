@@ -7,6 +7,7 @@ import postersAndDemosInternationalWithReview from '../shared/bibs/posters-and-d
 import papersDomesticWithReview from '../shared/bibs/papers-domestic-w-review.bib';
 import oralsDomestic from '../shared/bibs/orals-domestic.bib';
 import postersAndDemosDomestic from '../shared/bibs/posters-and-demos-domestic.bib';
+import arxiv from "../shared/bibs/arxiv.bib";
 
 const isMe = (name: string) => {
     return (
@@ -137,7 +138,11 @@ const renderJournalEn = ({
     }
 
     if (articleno) {
-        ret.push(`, Article ${articleno} (${issue_date})`);
+        ret.push(`, Article ${articleno}`);
+    }
+
+    if (issue_date) {
+        ret.push(` (${issue_date})`)
     }
 
     if (pages) {
@@ -257,6 +262,37 @@ const renderPublicationJa = ({
     return ret;
 };
 
+const renderPublicationArxiv = ({
+    entryTags: {
+        author,
+        title,
+        year,
+        eprint,
+        archivePrefix,
+        url,
+        primaryClass
+    }
+}: Publication) => {
+    const ret = [];
+    const authors = author.split(' and ');
+    const { length: authorsLength } = authors;
+
+    authors.forEach((a, i) => {
+        const b = a.split(/,\s?/);
+        const name = b.length === 1 ? b[0] : `${b[0]}${b[1]}`;
+        const last = i === authorsLength - 1;
+
+        ret.push(isMe(name) ? <b>{name}</b> : name, last ? '. ' : ', ');
+    });
+
+    ret.push(`${title}. `);
+    ret.push(`arXiv preprint ${archivePrefix}:${eprint} [${primaryClass}]`)
+    ret.push(`, ${year}. `);
+    ret.push(<a href={url}>{url}</a>);
+
+    return ret;
+};
+
 export default function Publications() {
     return (
         <div
@@ -283,7 +319,7 @@ export default function Publications() {
             <ol>
                 {bibtex.toJSON(journalsWithReview).map((a, i) => {
                     return (
-                        <li key={`journals-w-review-${i}`}>
+                        <li key={i}>
                             {/[\u4E00-\u9FAF\u3040-\u3096\u30A1-\u30FA]/.test(
                                 a.entryTags.journal!
                             )
@@ -297,7 +333,7 @@ export default function Publications() {
             <ol>
                 {bibtex.toJSON(papersInternationalWithReview).map((a, i) => {
                     return (
-                        <li key={`papers-international-w-review-${i}`}>
+                        <li key={i}>
                             {renderPublicationEn(a)}
                         </li>
                     );
@@ -310,7 +346,7 @@ export default function Publications() {
                     .map((a, i) => {
                         return (
                             <li
-                                key={`posters-and-demos-international-w-review-${i}`}
+                                key={i}
                             >
                                 {renderPublicationEn(a)}
                             </li>
@@ -321,7 +357,7 @@ export default function Publications() {
             <ol>
                 {bibtex.toJSON(papersDomesticWithReview).map((a, i) => {
                     return (
-                        <li key={`papers-domestic-w-review-${i}`}>
+                        <li key={i}>
                             {renderPublicationJa(a)}
                         </li>
                     );
@@ -334,7 +370,7 @@ export default function Publications() {
                 <ol>
                     {bibtex.toJSON(oralsDomestic).map((a, i) => {
                         return (
-                            <li key={`orals-domestic-${i}`}>
+                            <li key={i}>
                                 {renderPublicationJa(a)}
                             </li>
                         );
@@ -348,8 +384,22 @@ export default function Publications() {
                 <ol>
                     {bibtex.toJSON(postersAndDemosDomestic).map((a, i) => {
                         return (
-                            <li key={`posters-and-demos-domestic${i}`}>
+                            <li key={i}>
                                 {renderPublicationJa(a)}
+                            </li>
+                        );
+                    })}
+                </ol>
+            </details>
+            <details>
+                <summary>
+                    <h3>arxiv.org</h3>
+                </summary>
+                <ol>
+                    {bibtex.toJSON(arxiv).map((a, i) => {
+                        return (
+                            <li key={i}>
+                                {renderPublicationArxiv(a)}
                             </li>
                         );
                     })}
