@@ -1,7 +1,14 @@
-import fs from "node:fs/promises";
-import libpath from "node:path";
-import bibtex from "bibtex-parse-js";
 import type { ReactNode } from "react";
+import {
+	type Publication,
+	arxivs,
+	journalsWithReview,
+	oralsDomestic,
+	papersDomesticWithReview,
+	papersInternationalWithReview,
+	postersAndDemosDomestic,
+	postersAndDemosInternationalWithReview
+} from "../shared/bibs";
 
 const isMe = (name: string) => {
 	return (
@@ -38,18 +45,16 @@ const renderAuthorEn = (author: string) => {
 };
 
 const renderPublicationEn = ({
-	entryTags: {
-		author,
-		title,
-		booktitle,
-		series,
-		pages,
-		numpages,
-		year,
-		url,
-		_others_,
-		_miyashitacomurl_
-	}
+	author,
+	title,
+	booktitle,
+	series,
+	pages,
+	numpages,
+	year,
+	url,
+	_others_,
+	_miyashitacomurl_
 }: Publication) => {
 	const ret = [...renderAuthorEn(author)];
 
@@ -93,23 +98,21 @@ const renderPublicationEn = ({
 };
 
 const renderJournalEn = ({
-	entryTags: {
-		author,
-		title,
-		booktitle,
-		journal,
-		series,
-		volume,
-		number,
-		articleno,
-		issue_date,
-		pages,
-		numpages,
-		year,
-		url,
-		_others_,
-		_miyashitacomurl_
-	}
+	author,
+	title,
+	booktitle,
+	journal,
+	series,
+	volume,
+	number,
+	articleno,
+	issue_date,
+	pages,
+	numpages,
+	year,
+	url,
+	_others_,
+	_miyashitacomurl_
 }: Publication) => {
 	const ret = [...renderAuthorEn(author)];
 
@@ -174,20 +177,18 @@ const renderJournalEn = ({
 };
 
 const renderPublicationJa = ({
-	entryTags: {
-		author,
-		title,
-		journal,
-		booktitle,
-		volume,
-		number,
-		pages,
-		year,
-		_others_,
-		_miyashitacomurl_,
-		_videourl_,
-		_pressrelease_
-	}
+	author,
+	title,
+	journal,
+	booktitle,
+	volume,
+	number,
+	pages,
+	year,
+	_others_,
+	_miyashitacomurl_,
+	_videourl_,
+	_pressrelease_
 }: Publication) => {
 	const ret = [];
 	const authors = author.split(" and ");
@@ -263,7 +264,13 @@ const renderPublicationJa = ({
 };
 
 const renderPublicationArxiv = ({
-	entryTags: { author, title, year, eprint, archivePrefix, url, primaryClass }
+	author,
+	title,
+	year,
+	eprint,
+	archivePrefix,
+	url,
+	primaryClass
 }: Publication) => {
 	const ret = [];
 	const authors = author.split(" and ");
@@ -289,45 +296,7 @@ const renderPublicationArxiv = ({
 	return ret;
 };
 
-export default async function Publications() {
-	const arxiv = await fs.readFile(
-		libpath.join(process.cwd(), "src/shared/bibs/arxiv.bib"),
-		"utf-8"
-	);
-	const journalsWithReview = await fs.readFile(
-		libpath.join(process.cwd(), "src/shared/bibs/journals-w-review.bib"),
-		"utf-8"
-	);
-	const oralsDomestic = await fs.readFile(
-		libpath.join(process.cwd(), "src/shared/bibs/orals-domestic.bib"),
-		"utf-8"
-	);
-	const papersDomesticWithReview = await fs.readFile(
-		libpath.join(process.cwd(), "src/shared/bibs/papers-domestic-w-review.bib"),
-		"utf-8"
-	);
-	const papersInternationalWithReview = await fs.readFile(
-		libpath.join(
-			process.cwd(),
-			"src/shared/bibs/papers-international-w-review.bib"
-		),
-		"utf-8"
-	);
-	const postersAndDemosDomestic = await fs.readFile(
-		libpath.join(
-			process.cwd(),
-			"src/shared/bibs/posters-and-demos-domestic.bib"
-		),
-		"utf-8"
-	);
-	const postersAndDemosInternationalWithReview = await fs.readFile(
-		libpath.join(
-			process.cwd(),
-			"src/shared/bibs/posters-and-demos-international-w-review.bib"
-		),
-		"utf-8"
-	);
-
+export default function Publications() {
 	return (
 		<div
 			css={{
@@ -351,12 +320,10 @@ export default async function Publications() {
 		>
 			<h3>Journal w/ review</h3>
 			<ol>
-				{bibtex.toJSON(journalsWithReview).map((a, i) => {
+				{journalsWithReview.map((a, i) => {
 					return (
 						<li key={i}>
-							{/[\u4E00-\u9FAF\u3040-\u3096\u30A1-\u30FA]/.test(
-								a.entryTags.journal!
-							)
+							{/[\u4E00-\u9FAF\u3040-\u3096\u30A1-\u30FA]/.test(a.journal!)
 								? renderPublicationJa(a)
 								: renderJournalEn(a)}
 						</li>
@@ -365,19 +332,19 @@ export default async function Publications() {
 			</ol>
 			<h3>Paper at international conference w/ review</h3>
 			<ol>
-				{bibtex.toJSON(papersInternationalWithReview).map((a, i) => {
+				{papersInternationalWithReview.map((a, i) => {
 					return <li key={i}>{renderPublicationEn(a)}</li>;
 				})}
 			</ol>
 			<h3>Poster and demo at international conference w/ review</h3>
 			<ol>
-				{bibtex.toJSON(postersAndDemosInternationalWithReview).map((a, i) => {
+				{postersAndDemosInternationalWithReview.map((a, i) => {
 					return <li key={i}>{renderPublicationEn(a)}</li>;
 				})}
 			</ol>
 			<h3>Paper at domestic conference w/ review</h3>
 			<ol>
-				{bibtex.toJSON(papersDomesticWithReview).map((a, i) => {
+				{papersDomesticWithReview.map((a, i) => {
 					return <li key={i}>{renderPublicationJa(a)}</li>;
 				})}
 			</ol>
@@ -386,7 +353,7 @@ export default async function Publications() {
 					<h3>Oral presentation at domestic conference</h3>
 				</summary>
 				<ol>
-					{bibtex.toJSON(oralsDomestic).map((a, i) => {
+					{oralsDomestic.map((a, i) => {
 						return <li key={i}>{renderPublicationJa(a)}</li>;
 					})}
 				</ol>
@@ -396,7 +363,7 @@ export default async function Publications() {
 					<h3>Poster and demo at domestic conference</h3>
 				</summary>
 				<ol>
-					{bibtex.toJSON(postersAndDemosDomestic).map((a, i) => {
+					{postersAndDemosDomestic.map((a, i) => {
 						return <li key={i}>{renderPublicationJa(a)}</li>;
 					})}
 				</ol>
@@ -406,7 +373,7 @@ export default async function Publications() {
 					<h3>arxiv.org</h3>
 				</summary>
 				<ol>
-					{bibtex.toJSON(arxiv).map((a, i) => {
+					{arxivs.map((a, i) => {
 						return <li key={i}>{renderPublicationArxiv(a)}</li>;
 					})}
 				</ol>

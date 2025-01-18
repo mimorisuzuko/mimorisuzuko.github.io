@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@mimorisuzuko/yuuka": "1.0.7",
-    "bibtex-parse-js": "^0.0.24",
     "next": "15.1.5",
     "react": "19.0.0",
     "react-dom": "19.0.0"
