@@ -1,13 +1,12 @@
-import moment from 'moment';
-
 export const usbVersion = () => {
-    const current = new Date();
-    const currentYear = current.getFullYear();
-    const currentBirthday = moment(`${currentYear}0206`);
-    const a = currentYear - 1995;
-    const b = currentBirthday.diff(current, 'seconds');
-    const c = currentBirthday.diff(`${currentYear - 1}0206`, 'seconds');
-    const d = Math.floor((a - b / c) * 100) / 100;
+	const current = new Date();
+	const currentYear = current.getFullYear();
+	const currentBirthday = new Date(currentYear, 1, 6);
+	const a = currentYear - 1995;
+	const b = currentBirthday.getTime() - current.getTime();
+	const c =
+		currentBirthday.getTime() - new Date(currentYear - 1, 1, 6).getTime();
+	const d = Math.floor((a - b / c) * 100) / 100;
 
-    return `USB${d}`;
+	return `USB${d}`;
 };
