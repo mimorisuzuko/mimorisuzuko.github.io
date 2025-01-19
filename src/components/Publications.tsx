@@ -1,4 +1,6 @@
+import { css } from "@mimorisuzuko/yuuka";
 import type { ReactNode } from "react";
+import { RiFilePdf2Fill, RiNewsFill, RiYoutubeFill } from "react-icons/ri";
 import {
 	type Publication,
 	arxivs,
@@ -9,6 +11,10 @@ import {
 	postersAndDemosDomestic,
 	postersAndDemosInternationalWithReview
 } from "../shared/bibs";
+
+const [iconClassName, IconStyle] = css({
+	verticalAlign: "middle"
+});
 
 const isMe = (name: string) => {
 	return (
@@ -88,7 +94,7 @@ const renderPublicationEn = ({
 		ret.push(
 			" ",
 			<a href={_miyashitacomurl_} key={_miyashitacomurl_}>
-				[<i className="far fa-file-pdf" />
+				[<RiFilePdf2Fill className={iconClassName} />
 				PDF]
 			</a>
 		);
@@ -167,7 +173,7 @@ const renderJournalEn = ({
 		ret.push(
 			" ",
 			<a href={_miyashitacomurl_} key={_miyashitacomurl_}>
-				[<i className="far fa-file-pdf" />
+				[<RiFilePdf2Fill className={iconClassName} />
 				PDF]
 			</a>
 		);
@@ -234,7 +240,7 @@ const renderPublicationJa = ({
 		ret.push(
 			" ",
 			<a href={_miyashitacomurl_} key={_miyashitacomurl_}>
-				[<i className="far fa-file-pdf" />
+				[<RiFilePdf2Fill className={iconClassName} />
 				PDF]
 			</a>
 		);
@@ -244,7 +250,7 @@ const renderPublicationJa = ({
 		ret.push(
 			" ",
 			<a href={_videourl_} key={_videourl_}>
-				[<i className="fab fa-youtube" />
+				[<RiYoutubeFill className={iconClassName} />
 				Video]
 			</a>
 		);
@@ -254,7 +260,7 @@ const renderPublicationJa = ({
 		ret.push(
 			" ",
 			<a href={_pressrelease_} key={_pressrelease_}>
-				[<i className="fa fa-newspaper" />
+				[<RiNewsFill className={iconClassName} />
 				Press release]
 			</a>
 		);
@@ -318,6 +324,7 @@ export default function Publications() {
 				}
 			}}
 		>
+			<IconStyle />
 			<h3>Journal w/ review</h3>
 			<ol>
 				{journalsWithReview.map((a, i) => {

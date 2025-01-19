@@ -10,7 +10,8 @@
     "@mimorisuzuko/yuuka": "1.0.7",
     "next": "15.1.5",
     "react": "19.0.0",
-    "react-dom": "19.0.0"
+    "react-dom": "19.0.0",
+    "react-icons": "5.4.0"
   },
   "packageManager": "yarn@4.5.3",
   "engines": {

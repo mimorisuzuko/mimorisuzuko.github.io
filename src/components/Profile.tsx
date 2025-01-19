@@ -1,39 +1,51 @@
-import type { ReactNode } from "react";
+import { type CSS, css } from "@mimorisuzuko/yuuka";
+import type { FC, ReactNode } from "react";
+import {
+	RiBriefcase4Fill,
+	RiCake2Fill,
+	RiFacebookBoxFill,
+	RiGithubFill,
+	RiGoogleFill,
+	RiGraduationCapFill,
+	RiHeart3Fill,
+	RiMailFill,
+	RiTwitterXFill
+} from "react-icons/ri";
 
 const items: {
-	iconClassName: string;
+	Icon: FC<{ className: string }>;
 	jsx: ReactNode;
 }[] = [
 	{
-		iconClassName: "fa-solid fa-cake-candles",
+		Icon: RiCake2Fill,
 		jsx: "1995/02/06"
 	},
 	{
-		iconClassName: "fa-solid fa-user-graduate",
+		Icon: RiGraduationCapFill,
 		jsx: "Doctor of Science"
 	},
 	{
-		iconClassName: "fa-solid fa-briefcase",
+		Icon: RiBriefcase4Fill,
 		jsx: "ITANDI Inc."
 	},
 	{
-		iconClassName: "fa-solid fa-envelope",
+		Icon: RiMailFill,
 		jsx: "m(at)mimorisuzu.co"
 	},
 	{
-		iconClassName: "fa-brands fa-x-twitter",
+		Icon: RiTwitterXFill,
 		jsx: <a href="https://x.com/HirokiUsuba">HirokiUsuba</a>
 	},
 	{
-		iconClassName: "fa-brands fa-facebook",
+		Icon: RiFacebookBoxFill,
 		jsx: <a href="https://www.facebook.com/hrky0206">hrky0206</a>
 	},
 	{
-		iconClassName: "fa-brands fa-github",
+		Icon: RiGithubFill,
 		jsx: <a href="https://github.com/mimorisuzuko">mimorisuzuko</a>
 	},
 	{
-		iconClassName: "fa-brands fa-google",
+		Icon: RiGoogleFill,
 		jsx: (
 			<a href="https://scholar.google.co.jp/citations?user=JxA4JoIAAAAJ">
 				Google Scholar
@@ -41,6 +53,15 @@ const items: {
 		)
 	}
 ];
+
+const styles = {
+	ul: { listStyle: "none", padding: 0 }
+} as const satisfies { [key: string]: CSS };
+
+const [listIconClassName, ListIconStyle] = css({
+	marginRight: 8,
+	verticalAlign: "middle"
+});
 
 export default function Profile() {
 	return (
@@ -93,21 +114,18 @@ export default function Profile() {
 				>
 					Hiroki Usuba / <small>薄羽 大樹</small>
 				</div>
-				<ul className="fa-ul">
-					{items.map(({ iconClassName, jsx }, i) => (
+				<ListIconStyle />
+				<ul css={styles.ul}>
+					{items.map(({ Icon, jsx }, i) => (
 						<li key={i}>
-							<span className="fa-li">
-								<i className={iconClassName} />
-							</span>
+							<Icon className={listIconClassName} />
 							{jsx}
 						</li>
 					))}
 				</ul>
-				<ul className="fa-ul">
+				<ul css={styles.ul}>
 					<li>
-						<span className="fa-li">
-							<i className="fa-solid fa-heart" />
-						</span>
+						<RiHeart3Fill className={listIconClassName} />
 						<a href="https://hibiki-cast.jp/hibiki_f/mimori_suzuko/">
 							Suzuko Mimori
 						</a>

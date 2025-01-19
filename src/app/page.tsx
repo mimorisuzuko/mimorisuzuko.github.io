@@ -1,5 +1,4 @@
 import { Global } from "@mimorisuzuko/yuuka";
-import Script from "next/script";
 import Header from "../components/Header";
 import Profile from "../components/Profile";
 import Publications from "../components/Publications";
@@ -20,7 +19,6 @@ export default function Home() {
 					}
 				}}
 			</Global>
-			<Script src="https://kit.fontawesome.com/9129381b44.js" />
 			<Header />
 			<div
 				css={{
