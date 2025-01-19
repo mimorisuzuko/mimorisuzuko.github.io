@@ -27,7 +27,8 @@ export default tseslint.config(
 					ignoreIIFE: true
 				}
 			],
-			"react-hooks/exhaustive-deps": "off"
+			"react-hooks/exhaustive-deps": "off",
+			"@next/next/no-img-element": "off"
 		},
 		ignores: ["eslint.config.mjs"],
 		languageOptions: {
