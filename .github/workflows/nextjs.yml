@@ -31,16 +31,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: 'package.json'
+      - uses: oven-sh/setup-bun@v2
       - name: Install dependencies
-        run: |
-            corepack enable
-            yarn install
+        run: bun install
       - name: Build with Next.js
-        run: yarn build
+        run: bun run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
