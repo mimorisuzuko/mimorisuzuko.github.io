@@ -5,7 +5,7 @@
       "name": "mimorisuzuko.github.io",
       "dependencies": {
         "@mimorisuzuko/yuuka": "1.0.7",
-        "next": "^15.3.5",
+        "next": "15.3.5",
         "react": "19.0.0",
         "react-dom": "19.0.0",
         "react-icons": "5.4.0",
@@ -18,7 +18,7 @@
         "@types/react-dom": "19.0.3",
         "@typescript/native-preview": "^7.0.0-dev.20250705.1",
         "eslint": "9.18.0",
-        "eslint-config-next": "^15.3.5",
+        "eslint-config-next": "15.3.5",
         "typescript-eslint": "8.20.0",
       },
     },
