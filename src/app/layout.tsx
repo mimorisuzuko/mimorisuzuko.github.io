@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import { usbVersion } from "../shared/utils";
 
 export const metadata: Metadata = {
-	title: usbVersion()
+	title: "Hiroki Usuba"
 };
 
 export default function Layout({ children }: { children: ReactNode }) {

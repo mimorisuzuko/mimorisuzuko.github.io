@@ -1,9 +1,31 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import Colors from "../shared/colors";
 import { usbVersion } from "../shared/utils";
 
 const links = ["Publications", "Awards", "Education", "Work", "Others"];
 
 export default function Header() {
+	const [version, setVersion] = useState(usbVersion());
+	const animationRef = useRef(-1);
+
+	useEffect(() => {
+		const loop = () => {
+			const nextVersion = usbVersion();
+
+			document.title = nextVersion;
+			setVersion(nextVersion);
+			animationRef.current = requestAnimationFrame(loop);
+		};
+
+		loop();
+
+		return () => {
+			cancelAnimationFrame(animationRef.current);
+		};
+	}, []);
+
 	return (
 		<div
 			css={{
@@ -26,7 +48,7 @@ export default function Header() {
 				paddingLeft: "1rem"
 			}}
 		>
-			<div css={{ marginRight: "1rem" }}>{usbVersion()}</div>
+			<div css={{ marginRight: "1rem" }}>{version}</div>
 			{links.map((a, i) => {
 				return (
 					<a
