@@ -129,7 +129,8 @@ export default function Profile() {
 						<a href="https://hibiki-cast.jp/hibiki_f/mimori_suzuko/">
 							Suzuko Mimori
 						</a>
-						; <a href="https://www.twitch.tv/yunocy">yunocy</a>
+						; <a href="https://www.twitch.tv/yunocy">yunocy</a>;{" "}
+						<a href="https://x.com/bibian_ct1203">Bibian Murakawa</a>
 					</li>
 				</ul>
 			</div>
