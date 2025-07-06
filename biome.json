@@ -1,16 +1,18 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
-	"assists": {
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"assist": {
 		"actions": {
 			"source": {
-				"sortJsxProps": "on",
-				"useSortedKeys": "on"
+				"organizeImports": "on",
+				"useSortedAttributes": "on",
+				"useSortedKeys": "on",
+				"useSortedProperties": "on"
 			}
 		}
 	},
 	"files": {
-		"ignore": [".next", "package.json"],
-		"ignoreUnknown": false
+		"ignoreUnknown": false,
+		"includes": ["!.next", "!package.json"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -36,9 +38,6 @@
 				"noArrayIndexKey": "off"
 			}
 		}
-	},
-	"organizeImports": {
-		"enabled": true
 	},
 	"vcs": {
 		"clientKind": "git",
