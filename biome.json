@@ -12,7 +12,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["!.next", "!package.json"]
+		"includes": ["!.next", "!package.json", "src/**/*"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -29,6 +29,9 @@
 		"rules": {
 			"correctness": {
 				"noUnusedVariables": "error"
+			},
+			"performance": {
+				"noImgElement": "off"
 			},
 			"recommended": true,
 			"style": {

@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build && touch docs/.nojekyll && echo 'mimorisuzu.co' > docs/CNAME && rm -rf docs/404.html"
+    "build": "next build && touch docs/.nojekyll && echo 'mimorisuzu.co' > docs/CNAME && rm -rf docs/404.html",
+    "biome": "bunx biome check",
+    "biome:write": "bunx biome check --write"
   },
   "dependencies": {
     "@mimorisuzuko/yuuka": "1.0.7",

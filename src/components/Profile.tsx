@@ -67,40 +67,38 @@ export default function Profile() {
 	return (
 		<div
 			css={{
-				display: "flex",
-				flexWrap: "wrap",
 				"> div": {
-					padding: "0 0.5rem",
-					boxSizing: "border-box"
-				}
+					boxSizing: "border-box",
+					padding: "0 0.5rem"
+				},
+				display: "flex",
+				flexWrap: "wrap"
 			}}
 		>
 			<div
 				css={{
-					flexBasis: "100%",
-
 					"@media screen and (min-width: 480px)": {
 						flexBasis: "30%"
-					}
+					},
+					flexBasis: "100%"
 				}}
 			>
 				<img
 					alt="logo"
 					css={{
-						width: "100%",
+						borderRadius: "50%",
 						display: "block",
-						borderRadius: "50%"
+						width: "100%"
 					}}
 					src="/me.jpg"
 				/>
 			</div>
 			<div
 				css={{
-					flexBasis: "100%",
-
 					"@media screen and (min-width: 480px)": {
 						flexBasis: "70%"
-					}
+					},
+					flexBasis: "100%"
 				}}
 			>
 				<div

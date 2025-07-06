@@ -2,10 +2,10 @@ import { css } from "@mimorisuzuko/yuuka";
 import type { ReactNode } from "react";
 import { RiFilePdf2Fill, RiNewsFill, RiYoutubeFill } from "react-icons/ri";
 import {
-	type Publication,
 	arxivs,
 	journalsWithReview,
 	oralsDomestic,
+	type Publication,
 	papersDomesticWithReview,
 	papersInternationalWithReview,
 	postersAndDemosDomestic,
@@ -307,20 +307,20 @@ export default function Publications() {
 		<div
 			css={{
 				details: {
-					marginTop: "1em",
-					marginBottom: "1em"
-				},
-
-				summary: {
-					h3: {
-						marginTop: 0,
-						marginBottom: 0,
-						display: "inline-block"
-					}
+					marginBottom: "1em",
+					marginTop: "1em"
 				},
 
 				li: {
 					overflowWrap: "break-word"
+				},
+
+				summary: {
+					h3: {
+						display: "inline-block",
+						marginBottom: 0,
+						marginTop: 0
+					}
 				}
 			}}
 		>

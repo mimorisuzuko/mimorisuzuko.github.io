@@ -9,28 +9,27 @@ export default function Home() {
 		<div>
 			<Global>
 				{{
-					body: {
-						margin: 0,
-						fontFamily:
-							"'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif"
-					},
 					a: {
 						color: Colors.Pink
+					},
+					body: {
+						fontFamily:
+							"'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif",
+						margin: 0
 					}
 				}}
 			</Global>
 			<Header />
 			<div
 				css={{
-					maxWidth: 960,
-					marginLeft: "auto",
-					marginRight: "auto",
-					paddingLeft: "0.5rem",
-					paddingRight: "0.5rem",
-
 					h2: {
 						color: Colors.Pink
-					}
+					},
+					marginLeft: "auto",
+					marginRight: "auto",
+					maxWidth: 960,
+					paddingLeft: "0.5rem",
+					paddingRight: "0.5rem"
 				}}
 			>
 				<Profile />
