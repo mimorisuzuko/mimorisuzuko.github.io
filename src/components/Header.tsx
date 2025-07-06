@@ -14,7 +14,6 @@ export default function Header() {
 		const loop = () => {
 			const nextVersion = usbVersion();
 
-			document.title = nextVersion;
 			setVersion(nextVersion);
 			animationRef.current = requestAnimationFrame(loop);
 		};
